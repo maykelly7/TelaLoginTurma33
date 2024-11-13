@@ -20,16 +20,33 @@ $usuario = new Usuario();
     <h2 class="title">CADASTRO DE USUÁRIO</h2><br>
     <form action="" method="POST" class="formulario">
 
-        <label>Nome:</label><br>
-        <input type="text" name="nome" id="" placeholder="Nome Completo"><br><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" id="" placeholder="Digte seu e-mail"><br><br>
-        <label>Telefone:</label><br>
-        <input type="tel" name="telefone" id="" placeholder="Telefone Completo"><br><br>
-        <label>Senha:</label><br>
-        <input type="password" name="senha" id="" placeholder="Digite sua senha"><br><br>
-        <label>Confirmar senha:</label><br>
-        <input type="password" name="confSenha" id="" placeholder="Confirme sua senha"><br><br>
+        <div class="form-group">
+            <input type="text" name="nome" id="nome" placeholder=" " required>
+            <label for="nome">Nome Completo</label>
+        </div>
+
+        <div class="form-group">
+            <input type="email" name="email" id="email" placeholder=" " required>
+            <label for="email">Digite seu e-mail</label>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" name="telefone" id="telefone" placeholder=" " required>
+            <label for="telefone">Telefone Completo</label>
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="senha" id="senha" placeholder=" " required>
+            <label for="senha">Digite sua senha</label>
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="confSenha" id="confSenha" placeholder=" " required>
+            <label for="confSenha">Confirme sua senha</label>
+        </div>
+
+
+
 
         <input type="submit" value="CADASTRAR">
 
@@ -55,7 +72,7 @@ $usuario = new Usuario();
                 if ($senha == $confSenha) {
                     if ($usuario->cadastrar($nome, $telefone, $email, $senha)) {
     ?>
-                    
+
 
                         <div class="msg-sucesso">
                             <p>Cadastrado com sucesso</p>

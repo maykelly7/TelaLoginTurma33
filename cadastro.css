@@ -1,16 +1,95 @@
+/* body{
+    background-color: black;
+} */
+
+
 .title {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-left: 5%;
     left: -3%;
     font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+
 .formulario {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
+
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+}
+
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: #858585;
+    background-color: transparent;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease all;
+}
+
+
+.form-group input:focus {
+    border-color: rgb(200, 10, 80);
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+    color: rgb(200, 10, 80);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+/* Estilo para o botão de submit */
+.formulario input[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: rgb(200, 10, 80);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+.formulario input[type="submit"]:hover {
+    background-color: rgb(150, 10, 60);
+    transform: scale(1.05);
+}
+
+/* Efeito ao clicar no botão */
+.formulario input[type="submit"]:active {
+    background-color: rgb(120, 10, 40);
+}
+
