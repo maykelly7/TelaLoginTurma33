@@ -42,7 +42,7 @@ $usuario = new Usuario();
 
         <div class="form-group">
             <input type="password" name="confSenha" id="confSenha" placeholder=" " required>
-            <label for="confSenha">Confirme sua senha</label>
+            <label>Confirmar senha</label>
         </div>
 
 

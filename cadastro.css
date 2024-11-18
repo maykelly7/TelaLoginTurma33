@@ -8,8 +8,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-left: 5%;
-    left: -3%;
+    left: 0%;
+    top: 90px;
     font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -20,6 +20,8 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+    margin-top: 5%;
+    margin-left: 38.5%;
 }
 
 
@@ -53,43 +55,123 @@
 
 
 .form-group input:focus {
-    border-color: rgb(200, 10, 80);
+    border-color: rgb(10, 200, 45);
 }
 
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
     top: -10px;
     left: 10px;
-    background-color: #fff;
-    color: rgb(200, 10, 80);
+   /* background-color: #fff; */
+    color: rgb(10, 200, 67);
     font-weight: 600;
     font-size: 14px;
     padding: 0 5px;
 }
 
-/* Estilo para o botão de submit */
 .formulario input[type="submit"] {
-    width: 100%;
+    width: 50%;
     padding: 14px;
-    background-color: rgb(200, 10, 80);
+    background-color: rgb(10, 200, 38);
     border: none;
     border-radius: 8px;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    margin-top: 20px;
+    margin-top: 18%;
+    margin-left: 25%;
 }
 
-/* Efeito ao passar o mouse sobre o botão */
+
 .formulario input[type="submit"]:hover {
-    background-color: rgb(150, 10, 60);
+    background-color: rgb(26, 150, 10);
     transform: scale(1.05);
 }
 
-/* Efeito ao clicar no botão */
+
 .formulario input[type="submit"]:active {
-    background-color: rgb(120, 10, 40);
+    background-color: rgb(10, 120, 15);
 }
 
+.msg-sucesso {
+    background-color: #d4edda; 
+    color: #155724;
+    border: 1px solid #c3e6cb; 
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    margin-top: 2%;
+}
+
+.msg-sucesso p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.msg-sucesso a {
+    color: #155724;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.msg-sucesso a:hover {
+    text-decoration: underline;
+}
+
+
+.msg-sucesso.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.msg-sucesso a{
+    color: blue;
+}
+
+
+.msg-erro {
+    background-color: #d4edda; 
+    color: #155724;
+    border: 1px solid #c3e6cb; 
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    margin-top: 2%;
+}
+
+.msg-erro p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.msg-erro a {
+    color: #155724;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.msg-erro a:hover {
+    text-decoration: underline;
+}
+
+
+.msg-erro.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}

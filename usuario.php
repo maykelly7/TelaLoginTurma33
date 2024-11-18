@@ -1,92 +1,100 @@
 <?php
-    Class Usuario
+Class Usuario
+{
+    private $pdo;
+    public $msgErro = "";
+
+    public function conectar($nome, $host, $usuario, $senha)
     {
-        private $pdo;
-
-        public $msgErro = "";
-
-
-
-        public function conectar($nome,$host,$usuario,$senha)
+        try
         {
-            global $pdo;
-
-            try
-            {
-                $pdo = new PDO("mysql:dbname=".$nome, $usuario, $senha);
-            }
-
-            catch (PDOException $erro)
-            {
-                $msgErro = $erro->getMessage();
-            }
+            $this->pdo = new PDO("mysql:dbname=".$nome.";host=".$host, $usuario, $senha);
         }
-
-        public function cadastrar($nome, $telefone, $email, $senha)
+        catch (PDOException $erro)
         {
-            global $pdo;
+            $this->msgErro = $erro->getMessage();
+        }
+    }
 
-            // verificar se o email ja esta cadastrado
-            $sql = $pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :m"); //:m significa que colocamos uma apelido ja variavel email dp PHP
-            $sql->bindValue(":m",md5($email));
+    public function cadastrar($nome, $telefone, $email, $senha)
+    {
+        // Verificar se o email já está cadastrado
+        $sql = $this->pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :m");
+        $sql->bindValue(":m", md5($email)); // Usando md5, mas recomendamos usar password_hash para maior segurança
+        $sql->execute();
+
+        // Verificar se existe o email cadastrado
+        if ($sql->rowCount() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            $sql = $this->pdo->prepare("INSERT INTO usuario (nome, telefone, email, senha) VALUES (:n, :t, :e, :s)");
+            $sql->bindValue(":n", $nome);
+            $sql->bindValue(":t", $telefone);
+            $sql->bindValue(":e", $email);
+            $sql->bindValue(":s", md5($senha)); // Usando md5, mas recomendamos usar password_hash para maior segurança
             $sql->execute();
-
-            // verificar se existe email cadastrado
-            if($sql->rowCount()> 0)
-            {
-                return false;
-            }
-            else
-            {
-                $sql = $pdo->prepare("INSERT INTO usuario (nome,telefone,email,senha) VALUES (:n,:t,:e,:s)");
-                $sql ->bindValue(":n",$nome);
-                $sql ->bindValue(":t", $telefone);
-                $sql ->bindValue(":e", $email);
-                $sql ->bindValue(":s",md5($senha) );
-                $sql -> execute();
-                return true;
-            }
+            return true;
         }
+    }
 
-        public function logar($email, $senha)
+    public function logar($email, $senha)
+    {
+        $verificarEmail = $this->pdo->prepare("SELECT id_usuario, senha FROM usuario WHERE email = :e");
+        $verificarEmail->bindValue(":e", $email);
+        $verificarEmail->execute();
+
+        if ($verificarEmail->rowCount() > 0)
         {
-            global $pdo;
-
-            $verificarEmail = $pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :e AND senha = :s");
-            $verificarEmail->bindValue (":e", $email);
-            $verificarEmail->bindValue (":s", md5($senha));
-            $verificarEmail->execute();
-
-            if($verificarEmail->rowCount()>0)
+            $dados = $verificarEmail->fetch();
+            // Verifica se a senha corresponde (usando password_hash seria password_verify)
+            if (md5($senha) == $dados['senha'])
             {
-                // posso ligar no sistema, pois o email e senha existe no banco de dados e estão de acordo
-                $dados = $verificarEmail->fetch();
                 session_start();
                 $_SESSION['id_usuario'] = $dados['id_usuario'];
                 return true;
             }
-            else
-            {
-                return false;
-            }
         }
-        public function listarUsuarios()
-        {
-            global $pdo;
+        return false;
+    }
 
-            $sqlListar = $pdo->prepare("SELECT * FROM usuario");
-            $sqlListar->execute();
-            
-            if($sqlListar->rowCount()>0)
-            {
-                $dados = $sqlListar->fetchAll(PDO::FETCH_ASSOC);
-                return $dados;
-            }
-            else
-            {
-                return false;
-            }
+    public function listarUsuarios()
+    {
+        $sqlListar = $this->pdo->prepare("SELECT * FROM usuario");
+        $sqlListar->execute();
+
+        if ($sqlListar->rowCount() > 0)
+        {
+            $dados = $sqlListar->fetchAll(PDO::FETCH_ASSOC);
+            return $dados;
+        }
+        else
+        {
+            return false;
         }
     }
 
+    public function excluir($id)
+    {
+        // Verifica se o usuário com esse ID existe
+        $sql = $this->pdo->prepare("SELECT id_usuario FROM usuario WHERE id_usuario = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0)
+        {
+            // Exclui o usuário com o ID fornecido
+            $sql = $this->pdo->prepare("DELETE FROM usuario WHERE id_usuario = :id");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            return true; // Usuário excluído com sucesso
+        }
+        else
+        {
+            return false; // Usuário não encontrado
+        }
+    }
+}
 ?>

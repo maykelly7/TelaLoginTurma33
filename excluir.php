@@ -1,18 +1,17 @@
 <?php
     require_once 'usuario.php';
+    $usuario = new Usuario();
+    $usuario->conectar("cadastrousuarioturma33", "localhost", "root", "");
  
-    if(isset($_GET['id']))
+    if(isset($_POST['id_usuario']))
     {
-        $id = $_GET['id'];
+        $id = (int) $_POST['id_usuario'];
+
+        // $sqlSelect = "DELETE FROM usuario WHERE id_usuario=$id";
  
-        $usuario = new Usuario();
-        $usuario->conectar("cadastrousuarioturma33","localhost","root","");
+        $usuario->excluir($id);
  
-        $sqlSelect = "DELETE FROM usuarios WHERE id_usuario=$id";
- 
-        $usuario->excluirUsuario($id);
- 
-        header('Location: areaRestrita.php');
+        // header('Location: areaRestrita.php');
     }
     else
     {
