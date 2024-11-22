@@ -1,0 +1,109 @@
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 0%;
+    top: 90px;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.formulario {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 5%;
+    margin-left: 38.5%;
+}
+
+.formulario input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+}
+
+.formulario label{
+    /* position: absolute;
+    top: 50%;
+    left: 12px; */
+    color: #858585;
+    background-color: transparent;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease all;
+}
+
+.formulario input:focus{
+    border-color: rgb(10, 200, 45);
+}
+
+.formulario input:focus + label,
+.formulario input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+   /* background-color: #fff; */
+    color: rgb(10, 200, 67);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+.formulario input[type="submit"] {
+    width: 50%;
+    padding: 14px;
+    background-color: rgb(10, 200, 38);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 18%;
+    margin-left: 30%;
+}
+
+.formulario input[type="submit"]:hover {
+    background-color: rgb(26, 150, 10);
+    transform: scale(1.05);
+}
+
+
+.formulario input[type="submit"]:active {
+    background-color: rgb(10, 120, 15);
+}
+
+.msg-erro {
+    background-color: #d4edda; 
+    color: #155724;
+    border: 1px solid #c3e6cb; 
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    margin-top: 2%;
+}
+
+.msg-erro p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.inscreva{ 
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 40px;
+}

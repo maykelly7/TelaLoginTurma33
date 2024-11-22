@@ -1,0 +1,61 @@
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 0%;
+    top: 90px;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.form{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 5%;
+    margin-left: 38.5%;
+}
+
+.form input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+}
+
+.form label{
+    color: #858585;
+    background-color: transparent;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease all;
+}   
+
+.form input:focus{
+    border-color: rgb(10, 200, 45);
+}
+
+.b3 {
+    position: relative;
+    left: 40%;
+    background-color: rgb(10, 200, 38); /* Verde principal */
+    color: white; /* Texto branco */
+    padding: 12px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho do texto */
+    font-weight: bold; /* Negrito */
+    border: none; /* Sem borda */
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Indicador de clicável */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito de transição */
+}
+
+/* Efeito ao passar o mouse */
+.b3:hover {
+    background-color: rgb(26, 150, 10); /* Verde mais escuro */
+    transform: scale(1.05); /* Aumenta levemente o tamanho */
+}

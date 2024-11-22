@@ -11,23 +11,24 @@ $usuario = new Usuario();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tela login</title>
+    <link rel="stylesheet" href="login.css">
 
 </head>
 
 <body>
-    <h2>Tela Login</h2><br>
+    <div class="login-container">
+        <h2 class="title">Tela Login</h2><br>
+        <form method="post" class="formulario">
+            <label for="email">Usuário</label><br>
+            <input type="email" name="email" id="email" placeholder="Digite seu e-mail"><br><br>
 
-    <form method="post">
+            <label for="senha">Senha:</label><br>
+            <input type="password" name="senha" id="senha" placeholder="********"><br><br>
 
-        <label>Usúario</label><br>
-        <input type="email" name="email" placeholder="Digite seu e-mail"><br></br>
-
-        <label>Senha:</label><br>
-        <input type="passaword" name="senha" id="" placeholder="********"><br><br>
-
-        <input type="submit" value="LOGAR"><br>
-        <a href="cadastro.php">Inscreva-se</a>
-    </form>
+            <input type="submit" value="LOGAR"><br><br>
+            <a class="inscreva" href="cadastro.php">Inscreva-se</a>
+        </form>
+    </div>
     <?php
 
     if (isset($_POST['email'])) {
